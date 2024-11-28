@@ -1,122 +1,18 @@
-<div class="container-fluid text-left">
+<div class="container-fluid">
   <div class="row">
-    <div class="col titleCabecera">
+    <div class="col-10 titleCabecera text-right">
       <h1>{{title}}</h1>
     </div>
+    <div class="col loginBox text-center">
+      <a routerLink="/login">Login</a>
+    </div>
   </div>
+
 </div>
-<!-- MENU PRINCIPAL Original-->
+<div>
+  <app-main-menu></app-main-menu>
+</div>
+<div class="container-fluid">
+  <router-outlet />
+</div>
 
-<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: lightgray;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="color: black;">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav> -->
-
-
-<!-- Menu modificado -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary" >
-  <div class="container-fluid">
-
-    <a class="navbar-brand" routerLink="/home">
-      <i class="bi bi-house-door-fill"></i>
-    </a>
-
-    <a class="navbar-brand" href="#" style="color: black;">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        @for (item of menuItems; track item.id) {
-          @if (!item.isDropDown && item.parent==true){
-            <li class="nav-item " >
-              <a class="nav-link" routerLink="/{{item.route}}">{{item.name}}</a>
-            </li>
-          }
-          @else{
-            @if(item.idParent==null){
-            <li class="nav-item {{item.isDropDown?'dropdown':''}}">
-              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{item.name}}
-              </a>
-              <ul class="dropdown-menu">
-                @for (itemSubmenu of menuItems; track itemSubmenu.id) {
-                  @if(item.id==itemSubmenu.idParent){
-                    <li><a class="dropdown-item" routerLink="{{itemSubmenu.route}}">{{itemSubmenu.name}}</a></li>
-                  }
-                }
-              </ul>
-            </li>
-            }
-          }<!-- fin if menu -->
-        }<!-- fin for menu -->
-      </ul>
-      <form class="d-flex" role="search">
-
-        <input class="form-control me-2 bi bi-search" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-
-
-<!-- Menu Secundario -->
-<!-- <div class="container-fluid">
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">home</div>
-    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">profile</div>
-    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">contacto</div>
-    <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">disabled</div>
-  </div>
-</div> -->
-<hr>
-<br>
-<br>
-<router-outlet />
