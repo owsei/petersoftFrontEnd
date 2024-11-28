@@ -23,11 +23,13 @@ export class ApiLumenService {
 
   public postData(url:any,parameters:HttpParams){
 
+
     this.http.post<any>(
       environment.apiLumenUrl + url,
       parameters
     ).subscribe({
       next: data => {
+        console.log(data);
         return data;
       },
       error: error => {

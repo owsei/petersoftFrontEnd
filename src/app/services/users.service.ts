@@ -23,26 +23,11 @@ export class UsersService{
   constructor(private localStorageService:LocalStorageService,private apiLumen:ApiLumenService) { }
 
 
-  login(user: any,password:any): Observable<any> {
-
+  login(user: any,password:any){
     let parameters = new HttpParams();
     parameters=parameters.set('userName', user);
     parameters=parameters.set('password', password);
-
-
-
-
-
-    console.log("Servicio Usuarios")
-    console.log(user);
-    console.log(password)
-    let token='jasdkljahsdflasdhflaksjdhfaljhfa';
-    console.log('Servicio back: '+token);
-
-    let usurario=this.apiLumen.postData('loginUser',parameters);
-
-
-    return  of(token);
+    return this.apiLumen.postData('loginUser',parameters);
   }
 
 

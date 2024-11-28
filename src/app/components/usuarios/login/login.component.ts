@@ -28,13 +28,7 @@ export class LoginComponent {
     console.log('Contraseña cifrada con MD5:', this.md5HashedPassword);
     console.log('Password:'+this.password);
 
-    this.userService.login(this.nombreUsuario,this.md5HashedPassword).subscribe(data=>{
-      console.log('Token de Back:'+ data);
-    });
-
-
-
-
+    let user= this.userService.login(this.nombreUsuario,this.md5HashedPassword);
 
   }
 
