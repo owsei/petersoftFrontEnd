@@ -1,6 +1,3 @@
-<p>login works!</p>
-
-
 <div class="container loginContainerPage">
   <div class="row text-left">
     <div class="col">Nombre de usuario</div>
@@ -19,5 +16,13 @@
       <input type="button" value="Login" (click)="login()">
     </div>
   </div>
+  <div class="row">
+    @if (errorMessage==true){
+      <div class="col" style="color: darkred;">
+          <div>Message de error</div>
+      </div>
+    }
+  </div>
 </div>
+
 

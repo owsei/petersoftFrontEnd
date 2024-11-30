@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable,signal } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
-import { Observable,of } from 'rxjs';
+import { Observable,firstValueFrom, forkJoin } from 'rxjs';
 import { User } from '../interfaces/user';
 import { ApiLumenService } from './api-lumen.service';
 import { HttpParams  } from '@angular/common/http';
@@ -17,18 +17,40 @@ export class UsersService{
     id:0,name:'',token:''
   };
 
-  usuario=signal('');
+  usuario=signal<User>({id:0,name:'',token:''});
+  usuarioInicial=({id:0,name:'',token:''});
+
   tokenServer = signal("");
+  requestOne:any;
 
-  constructor(private localStorageService:LocalStorageService,private apiLumen:ApiLumenService) { }
-
-
-  login(user: any,password:any){
-    let parameters = new HttpParams();
-    parameters=parameters.set('userName', user);
-    parameters=parameters.set('password', password);
-    return this.apiLumen.postData('loginUser',parameters);
+  constructor(private localStorageService:LocalStorageService,private apiLumen:ApiLumenService) {
+    let storedUser:any;
+    if (typeof window !== 'undefined') {
+      storedUser = this.localStorageService.getItem('usuario');
+      this.usuario.set(storedUser);
+    }
   }
+
+  async login(user: any,password:any): Promise<any> {
+    let parameters = new HttpParams()
+      .set('userName', user)
+      .set('password', password);
+
+     try{
+      const response= await this.apiLumen.postDataObservable('loginUser',parameters);
+      this.usuario.set(response);
+      this.localStorageService.setItem("usuario",response);
+      return response;
+     }
+     catch(error){
+      console.log(error);
+     }
+    }
+
+    cerrarSesion(){
+      this.usuario.set(this.usuarioInicial);
+      this.localStorageService.removeItem('usuario');
+    }
 
 
 }

@@ -3,6 +3,8 @@ import * as CryptoJS from 'crypto-js';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../../services/users.service';
+import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,10 +19,19 @@ export class LoginComponent {
   password:any;
   md5HashedPassword:any;
   token:any;
+  userData:any;
+  errorMessage:boolean=false;
 
-  constructor(private userService:UsersService){}
+  constructor(private userService:UsersService,private router:Router){
+    if (typeof window !== 'undefined') {
+      console.log('we are running on the client')
+  } else {
+      console.log('we are running on the server');
+  }
+  }
 
-  login(){
+  async login(){
+
     console.log('Pulsado');
     console.log('Nombre de usuario:'+this.nombreUsuario);
 
@@ -28,9 +39,32 @@ export class LoginComponent {
     console.log('Contraseña cifrada con MD5:', this.md5HashedPassword);
     console.log('Password:'+this.password);
 
-    let user= this.userService.login(this.nombreUsuario,this.md5HashedPassword);
+
+    try {
+      // Espera a que la autenticación se complete
+      const authResponse = await this.userService.login(this.nombreUsuario,this.md5HashedPassword);
+      if (authResponse==null)
+      {
+        this.errorMessage=true;
+
+      }
+      else
+      {
+        //una vez autenticado nos movemos a principal
+        this.errorMessage=false;
+        this.router.navigate(['/home']);
+      }
+
+    } catch (error) {
+      this.errorMessage=true;
+    }
+
+
 
   }
+
+
+
 
 
 }

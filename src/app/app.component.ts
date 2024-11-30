@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ImportsModule } from './modules/imports/imports.module';
 import { MainMenuComponent } from "./components/pages/main-menu/main-menu.component";
+import { UsersService } from './services/users.service';
+import { User } from './interfaces/user';
 
 interface City {
   name: string;
@@ -35,16 +37,24 @@ export class AppComponent implements OnInit {
 
   menuItems:any;
 
-  constructor(){
+  usuarioActual:User=({id:0,name:'',token:''});
 
+  constructor(public userService:UsersService){
+    effect(() => {
+      this.usuarioActual = this.userService.usuario();
+    });
   }
 
   ngOnInit() {
 
 
+
   }
 
 
+  cerrarSesion(){
+    this.userService.cerrarSesion();
+  }
 
 
 }

@@ -3,9 +3,22 @@
     <div class="col-10 titleCabecera text-right">
       <h1>{{title}}</h1>
     </div>
-    <div class="col loginBox text-center">
-      <a routerLink="/login">Login</a>
-    </div>
+      @if(usuarioActual && usuarioActual.name!=''){
+      <div class="col">
+        <div>
+          Hola {{usuarioActual.name}}
+        </div>
+        <div>
+          <button type="button" (click)="cerrarSesion()" class="btn btn-primary btn-sm">Cerrar session</button>
+        </div>
+      </div>
+      }
+    @else {
+      <div class="col loginBox text-center">
+        <a routerLink="/login">Login</a>
+      </div>
+    }
+
   </div>
 
 </div>
