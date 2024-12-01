@@ -22,9 +22,11 @@
   </div>
 
 </div>
+@if(usuarioActual && usuarioActual.name!=''){
 <div>
   <app-main-menu></app-main-menu>
 </div>
+}
 <div class="container-fluid">
   <router-outlet />
 </div>

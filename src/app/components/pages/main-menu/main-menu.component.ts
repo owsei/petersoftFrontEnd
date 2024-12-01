@@ -19,7 +19,7 @@ export class MainMenuComponent implements OnInit {
 
     this.menuItems=[
       {id:1,name :'Home',route:'/home',isDropDown:false,parent:true,order:1},
-      {id:2,name:'Link',route:'/links',isDropDown:false,parent:true,order:2},
+      {id:2,name:'Insert Weight',route:'/insertWeigth',isDropDown:false,parent:true,order:2},
       {id:3,name:'Desplegable',route:'',isDropDown:true,parent:true,order:3},
       {id:4,name:'Action',route:'/actionsDesplegable',isDropDown:false,parent:false,idParent:3,order:1},
       {id:5,name:'Links',route:'/linksDesplegable',isDropDown:false,parent:false,idParent:3,order:1},
