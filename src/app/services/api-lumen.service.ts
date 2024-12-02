@@ -22,7 +22,6 @@ export class ApiLumenService {
 
 
   public postData(url:any,parameters:HttpParams){
-
     this.http.post<any>(environment.apiLumenUrl + url,parameters).subscribe({
       next: data => {
         return data;
@@ -33,8 +32,9 @@ export class ApiLumenService {
     })
   }
 
-  public postDataObservable(url:any,parameters:HttpParams): Promise<any> {
-    return this.http.post(environment.apiLumenUrl + url, parameters).toPromise();
+  public async postDataObservable(url:any,parameters:HttpParams): Promise<any> {
+    // console.log("Ruta back:"+environment.apiLumenUrl + url);
+    return await this.http.post(environment.apiLumenUrl + url, parameters).toPromise();
   }
 
 

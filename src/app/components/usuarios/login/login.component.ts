@@ -38,15 +38,12 @@ export class LoginComponent {
     this.md5HashedPassword = CryptoJS.MD5(this.password).toString();
     console.log('Contraseña cifrada con MD5:', this.md5HashedPassword);
     console.log('Password:'+this.password);
-
-
     try {
       // Espera a que la autenticación se complete
       const authResponse = await this.userService.login(this.nombreUsuario,this.md5HashedPassword);
       if (authResponse==null)
       {
         this.errorMessage=true;
-
       }
       else
       {

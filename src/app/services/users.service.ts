@@ -14,11 +14,11 @@ import { HttpParams  } from '@angular/common/http';
 export class UsersService{
 
   usuarioBD:User={
-    id:0,name:'',token:''
+    id:0,name:'',token:'',userid:''
   };
 
-  usuario=signal<User>({id:0,name:'',token:''});
-  usuarioInicial=({id:0,name:'',token:''});
+  usuario=signal<User>({id:0,name:'',token:'',userid:''});
+  usuarioInicial=({id:0,name:'',token:'',userid:''});
 
   tokenServer = signal("");
   requestOne:any;

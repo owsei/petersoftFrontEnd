@@ -31,6 +31,7 @@
     "bootstrap-icons": "^1.11.3",
     "chart.js": "4.4.2",
     "crypto-js": "^4.2.0",
+    "flatpickr": "^4.6.13",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
     "primeng": "17.18.12",

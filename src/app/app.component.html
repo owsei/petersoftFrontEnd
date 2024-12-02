@@ -1,26 +1,19 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-10 titleCabecera text-right">
-      <h1>{{title}}</h1>
+  <div class="row cabecera">
+    <div class="col-10 text-left" >
+      <h1 class="titleCabecera">{{title}}</h1>
     </div>
-      @if(usuarioActual && usuarioActual.name!=''){
-      <div class="col">
-        <div>
-          Hola {{usuarioActual.name}}
-        </div>
-        <div>
-          <button type="button" (click)="cerrarSesion()" class="btn btn-primary btn-sm">Cerrar session</button>
-        </div>
-      </div>
-      }
-    @else {
-      <div class="col loginBox text-center">
-        <a routerLink="/login">Login</a>
-      </div>
+    @if(usuarioActual && usuarioActual.name!=''){
+    <div class="col text-center">
+      <app-user-menu></app-user-menu>
+    </div>
     }
-
+    @else {
+    <div class="col">
+      <a routerLink="/login" style="color:white">Login</a>
+    </div>
+    }
   </div>
-
 </div>
 @if(usuarioActual && usuarioActual.name!=''){
 <div>

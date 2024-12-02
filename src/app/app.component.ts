@@ -5,6 +5,7 @@ import { ImportsModule } from './modules/imports/imports.module';
 import { MainMenuComponent } from "./components/pages/main-menu/main-menu.component";
 import { UsersService } from './services/users.service';
 import { User } from './interfaces/user';
+import { UserMenuComponent } from './components/usuarios/user-menu/user-menu.component';
 
 interface City {
   name: string;
@@ -19,7 +20,8 @@ interface City {
     RouterOutlet,
     ImportsModule,
     FormsModule,
-    MainMenuComponent
+    MainMenuComponent,
+    UserMenuComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -37,7 +39,7 @@ export class AppComponent implements OnInit {
 
   menuItems:any;
 
-  usuarioActual:User=({id:0,name:'',token:''});
+  usuarioActual:User=({id:0,name:'',token:'',userid:''});
 
   constructor(public userService:UsersService){
     effect(() => {
@@ -46,9 +48,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
-
   }
 
 
