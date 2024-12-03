@@ -37,7 +37,7 @@ export class UsersService{
       .set('password', password);
 
      try{
-      const response= await this.apiLumen.postDataObservable('loginUser',parameters);
+      const response= await this.apiLumen.postDataObservableAsync('loginUser',parameters);
       this.usuario.set(response);
       this.localStorageService.setItem("usuario",response);
       return response;

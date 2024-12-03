@@ -18,7 +18,7 @@ export class WeightService {
       .set('weightInsert', weight);
 
      try{
-      const response= await this.apiLumenService.postDataObservable('insertWeight',parameters);
+      const response= await this.apiLumenService.postDataObservableAsync('insertWeight',parameters);
       return response;
      }
      catch(error){

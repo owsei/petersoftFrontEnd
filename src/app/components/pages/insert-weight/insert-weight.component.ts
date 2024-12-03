@@ -16,7 +16,7 @@ import { DatePipe } from '@angular/common';
 })
 export class InsertWeightComponent implements AfterViewInit{
 
-  selectedDate:any;
+  selectedDate:any =  new Date().toLocaleDateString("dd/mm/YYYY");
   fechaTransformada:any;
   peso:any;
   constructor(private weightService:WeightService,public userService:UsersService,private router:Router,private datePipe: DatePipe){
@@ -24,7 +24,7 @@ export class InsertWeightComponent implements AfterViewInit{
   }
   ngAfterViewInit(): void {
     flatpickr('#calendar', {
-      dateFormat: 'd-m-Y', // Formato de fecha
+      dateFormat: 'd/m/Y', // Formato de fecha
       enableTime: false, //true,   // Habilitar selector de hora
       time_24hr: true,    // Mostrar en formato 24 horas
       onChange: (selectedDate) => {

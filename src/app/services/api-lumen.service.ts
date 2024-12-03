@@ -11,15 +11,16 @@ export class ApiLumenService {
   constructor(private http: HttpClient) { }
 
   private apiUrl = environment.apiLumenUrl;
+
   // const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-  parameters = new HttpParams();
 
+  public async getDataAsync(url:string,parameters:HttpParams): Promise<any> {
+    return await this.http.get(environment.apiLumenUrl + url);
+  }
 
-  // public getData(url:any,params:string): Observable<any> {
-  //   const parameters = new HttpParams().set('param', params);
-  //   return this.http.get(environment.apiLumenUrl + url,params:parameters);
-  // }
-
+  public async getDataJsonAsync(url:string): Promise<any> {
+    return await this.http.get(url).toPromise();
+  }
 
   public postData(url:any,parameters:HttpParams){
     this.http.post<any>(environment.apiLumenUrl + url,parameters).subscribe({
@@ -32,7 +33,7 @@ export class ApiLumenService {
     })
   }
 
-  public async postDataObservable(url:any,parameters:HttpParams): Promise<any> {
+  public async postDataObservableAsync(url:any,parameters:HttpParams): Promise<any> {
     // console.log("Ruta back:"+environment.apiLumenUrl + url);
     return await this.http.post(environment.apiLumenUrl + url, parameters).toPromise();
   }
