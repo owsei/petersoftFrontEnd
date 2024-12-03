@@ -5,6 +5,7 @@ import flatpickr from 'flatpickr';
 import { WeightService } from '../../../services/weight.service';
 import { UsersService } from '../../../services/users.service';
 import { DatePipe } from '@angular/common';
+import moment from 'moment';
 
 @Component({
   selector: 'app-insert-weight',
@@ -16,11 +17,10 @@ import { DatePipe } from '@angular/common';
 })
 export class InsertWeightComponent implements AfterViewInit{
 
-  selectedDate:any =  new Date().toLocaleDateString("dd/mm/YYYY");
+  selectedDate =moment().format('DD/MM/YYYY');
   fechaTransformada:any;
   peso:any;
   constructor(private weightService:WeightService,public userService:UsersService,private router:Router,private datePipe: DatePipe){
-
   }
   ngAfterViewInit(): void {
     flatpickr('#calendar', {
@@ -40,6 +40,8 @@ export class InsertWeightComponent implements AfterViewInit{
   }
 
   async insertWeight(){
+    this.fechaTransformada = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd') || '';
+
     if (this.fechaTransformada!='' && this.peso!=''){
       let response= await this.weightService.insertWeight(this.userService.usuario().id,this.fechaTransformada,this.peso);
       this.router.navigate(['/home']);

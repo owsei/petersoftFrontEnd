@@ -15,7 +15,7 @@ export class ApiLumenService {
   // const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
   public async getDataAsync(url:string,parameters:HttpParams): Promise<any> {
-    return await this.http.get(environment.apiLumenUrl + url);
+    return await this.http.get(environment.apiLumenUrl + url).toPromise();
   }
 
   public async getDataJsonAsync(url:string): Promise<any> {

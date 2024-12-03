@@ -10,6 +10,13 @@ export class WeightService {
   constructor(private apiLumenService:ApiLumenService) { }
 
 
+  async getWeight(){
+    let parameters = new HttpParams();
+    const data= await this.apiLumenService.getDataAsync('getWeight',parameters);
+    return data;
+
+  }
+
   async insertWeight(idUser:any,date:any,weight:any){
 
     let parameters = new HttpParams()

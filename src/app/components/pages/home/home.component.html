@@ -1,8 +1,77 @@
 <h3>Weight meditions</h3>
 
 
-<p aria-hidden="true">
-  <span class="placeholder col-6"></span>
-</p>
+<!-- <div class="placeholder-glow" aria-hidden="true" >
+  <div class="row">
+    <div class="placeholder col-2"></div>
+    <div class="placeholder col-2"></div>
+  </div>
+</div> -->
+@if(loading==false)
+{
+  <div class="card" aria-hidden="true">
+    <img src="" class="card-img-top" alt="">
+    <div class="card-body">
+      <h5 class="card-title placeholder-glow">
+        <span class="placeholder col-6"></span>
+      </h5>
+      <p class="card-text placeholder-glow">
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+      </p>
+      <p class="card-text placeholder-glow">
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+      </p>
+      <p class="card-text placeholder-glow">
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+        <span class="placeholder col-2"></span>&nbsp;
+      </p>
+    </div>
+  </div>
+}
+@else {
 
-<a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-4" aria-hidden="true"></a>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of weightData; track item.id ;let idx = $index) {
+      <tr>
+        <th scope="row">{{idx}}</th>
+        <td>{{item.weight}}</td>
+        <td>{{item.dateWeight}}</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+
+}
+
+<!-- <div class="container">
+  @for (item of weightData; track item.id ;let idx = $index) {
+    <div class="row">
+      <div class="col">{{idx}}</div>
+      <div class="col">{{item.weight}}</div>
+      <div class="col">{{item.dateWeight}}</div>
+    </div>
+  }
+</div> -->
+
+
+
+
