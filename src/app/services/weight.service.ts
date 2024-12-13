@@ -18,7 +18,14 @@ export class WeightService {
 
     const data= await this.apiLumenService.getDataAsync('getWeight',parameters);
     return data;
+  }
 
+  async getWeightForGraphic(idUser:any){
+    let parameters = new HttpParams()
+      .set('idUser',idUser)
+
+    const data= await this.apiLumenService.getDataAsync('getWeightForGraphic',parameters);
+    return data;
   }
 
   async insertWeight(idUser:any,date:any,weight:any){

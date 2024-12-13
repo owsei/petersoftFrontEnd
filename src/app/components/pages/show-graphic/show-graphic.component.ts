@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { WeightService } from '../../../services/weight.service';
+import { UsersService } from '../../../services/users.service';
 
 
 @Component({
@@ -10,24 +12,40 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
   styleUrl: './show-graphic.component.css'
 })
 export class ShowGraphicComponent implements OnInit {
-  chartOptions = {
-    title: {
-      text: "Basic Column Chart in Angular"
-    },
-    data: [{
-      type: "line",
-      dataPoints: [
-      { label: "Apple",  y: 10  },
-      { label: "Orange", y: 15  },
-      { label: "Banana", y: 25  },
-      { label: "Mango",  y: 30  },
-      { label: "Grape",  y: 28  }
-      ]
-    }]
-  };
+  loading=false;
+  weightData!:any;
+  chartOptions:any;
 
-  ngOnInit(): void {
 
+  constructor(private weightService:WeightService,private usersService:UsersService){}
+
+  async ngOnInit(){
+
+    this.loading=false;
+    this.weightData=await this.weightService.getWeightForGraphic(this.usersService.usuario().id);
+    console.log(this.weightData);
+    let dataForChart=[];
+    for(var i=0;i<this.weightData.length;i++)
+    {
+      var d={
+        x: new Date(this.weightData[i].x),
+        y:this.weightData[i].y
+      };
+      dataForChart.push(d);
+    }
+    this.loading=true;
+
+    this.chartOptions = {
+      title: {
+        text: "Weight for "+ this.usersService.usuario().name+" "
+      },
+      data: [{
+        type: "line",
+			  // xValueFormatString: "dd/mm/YYYY",
+        // dataPoints:this.weightData
+        dataPoints:dataForChart
+      }]
+    };
   }
 
 
