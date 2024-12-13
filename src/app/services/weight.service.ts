@@ -1,3 +1,5 @@
+import { UsersService } from './users.service';
+import { User } from './../interfaces/user';
 import { Injectable } from '@angular/core';
 import { ApiLumenService } from './api-lumen.service';
 import { HttpParams } from '@angular/common/http';
@@ -7,11 +9,13 @@ import { HttpParams } from '@angular/common/http';
 })
 export class WeightService {
 
-  constructor(private apiLumenService:ApiLumenService) { }
+  constructor(private apiLumenService:ApiLumenService,private usersService:UsersService) { }
 
 
-  async getWeight(){
-    let parameters = new HttpParams();
+  async getWeight(idUser:any){
+    let parameters = new HttpParams()
+      .set('idUser',idUser)
+
     const data= await this.apiLumenService.getDataAsync('getWeight',parameters);
     return data;
 

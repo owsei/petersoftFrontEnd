@@ -3,7 +3,7 @@ import { MainPageComponent } from './components/pages/main-page/main-page.compon
 import { HomeComponent } from './components/pages/home/home.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
 import { InsertWeightComponent } from './components/pages/insert-weight/insert-weight.component';
-import { WeightGraphicComponent } from './components/graphics/weight-graphic/weight-graphic.component';
+import { ShowGraphicComponent } from './components/pages/show-graphic/show-graphic.component'
 
 export const routes: Routes = [
   //Principal
@@ -12,5 +12,5 @@ export const routes: Routes = [
   // USUARIOS
   {path:'login',component:LoginComponent,pathMatch:'full'},
   {path:'insertWeigth',component:InsertWeightComponent,pathMatch:'full'},
-  {path:'showGraphic',component:WeightGraphicComponent,pathMatch:'full'}
+  {path:'showGraphic',component:ShowGraphicComponent,pathMatch:'full'}
 ];

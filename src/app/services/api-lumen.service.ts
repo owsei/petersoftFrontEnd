@@ -8,14 +8,19 @@ import { Observable,firstValueFrom,forkJoin  } from 'rxjs';
 })
 export class ApiLumenService {
 
-  constructor(private http: HttpClient) { }
+  headers = new Headers();
+
+
+  constructor(private http: HttpClient) {
+    this.headers.append('Content-Type', 'application/json');
+   }
 
   private apiUrl = environment.apiLumenUrl;
 
   // const myheader = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
   public async getDataAsync(url:string,parameters:HttpParams): Promise<any> {
-    return await this.http.get(environment.apiLumenUrl + url).toPromise();
+    return await this.http.get(environment.apiLumenUrl + url,{ params: parameters }).toPromise();
   }
 
   public async getDataJsonAsync(url:string): Promise<any> {
@@ -34,8 +39,11 @@ export class ApiLumenService {
   }
 
   public async postDataObservableAsync(url:any,parameters:HttpParams): Promise<any> {
+    let parametersToPost = new HttpParams();
+    if (parameters)
+      parametersToPost=parameters;
     // console.log("Ruta back:"+environment.apiLumenUrl + url);
-    return await this.http.post(environment.apiLumenUrl + url, parameters).toPromise();
+    return await this.http.post(environment.apiLumenUrl + url, parametersToPost).toPromise();
   }
 
 

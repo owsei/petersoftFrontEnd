@@ -48,6 +48,7 @@ export class MenuService implements OnInit {
     if (currentMenu.length==0)
     {
       let dataMenu = await this.apiLumenService.getDataJsonAsync('http://localhost:3000/menu');
+      // let dataMenu = await this.apiLumenService.postDataObservableAsync('getMainMenu')
       this._mainMenu.set(dataMenu);
     }
     return this._mainMenu();
