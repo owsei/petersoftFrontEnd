@@ -40,7 +40,10 @@ export class InsertWeightComponent implements AfterViewInit{
   }
 
   async insertWeight(){
-    this.fechaTransformada = this.datePipe.transform(this.selectedDate, 'yyyy-MM-dd') || '';
+    console.log(this.selectedDate);
+    var datePart=this.selectedDate.split('/');
+    var d=new Date( new Date(+datePart[2], +datePart[1] - 1, +datePart[0]));
+    this.fechaTransformada = this.datePipe.transform(d, 'yyyy-MM-dd') || '';
 
     if (this.fechaTransformada!='' && this.peso!=''){
       let response= await this.weightService.insertWeight(this.userService.usuario().id,this.fechaTransformada,this.peso);

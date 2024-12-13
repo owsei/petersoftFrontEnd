@@ -41,8 +41,7 @@ export class ShowGraphicComponent implements OnInit {
       },
       data: [{
         type: "line",
-			  // xValueFormatString: "dd/mm/YYYY",
-        // dataPoints:this.weightData
+			  xValueFormatString: "DD/MM/YYYY",
         dataPoints:dataForChart
       }]
     };

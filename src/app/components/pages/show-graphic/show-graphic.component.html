@@ -5,12 +5,14 @@
   <span class="sr-only">Loading...</span>
 }
 @else {
-  <div>
-    <canvasjs-chart [options]="chartOptions"></canvasjs-chart>
-  </div>
-  <!-- @for (item of weightData; track item.id) {
-    <div>
-      {{weightData.x}} - {{weightData.y}}
+  <div class="container" >
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-8">
+        Grafica
+        <canvasjs-chart [options]="chartOptions"></canvasjs-chart>
+      </div>
+      <div class="col"></div>
     </div>
-  } -->
+  </div>
 }
