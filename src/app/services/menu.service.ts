@@ -3,6 +3,7 @@ import { Mainmenu } from '../interfaces/mainmenu';
 import { ApiLumenService } from './api-lumen.service';
 import { Injectable, OnInit,signal,Signal  } from '@angular/core';
 import { HttpParams  } from '@angular/common/http';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class MenuService implements OnInit {
   private _user=signal<User|null>(null);
   private _mainMenu=signal<Array<Mainmenu>>(new Array());
 
-  constructor(private apiLumenService:ApiLumenService) { }
+  constructor(private apiLumenService:ApiLumenService,private userService:UsersService) { }
 
   ngOnInit(): void {
 
@@ -47,8 +48,10 @@ export class MenuService implements OnInit {
     const currentMenu = this._mainMenu();
     if (currentMenu.length==0)
     {
-      let dataMenu = await this.apiLumenService.getDataJsonAsync('http://localhost:3000/menu');
-      // let dataMenu = await this.apiLumenService.postDataObservableAsync('getMainMenu')
+      // let dataMenu = await this.apiLumenService.getDataJsonAsync('http://localhost:3000/menu');
+      let parameters = new HttpParams()
+      .set('idUser',this.userService.usuario().id)
+      let dataMenu = await this.apiLumenService.getDataAsync('getMainMenu',parameters);
       this._mainMenu.set(dataMenu);
     }
     return this._mainMenu();

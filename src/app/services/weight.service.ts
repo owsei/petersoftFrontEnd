@@ -15,6 +15,7 @@ export class WeightService {
   async getWeight(idUser:any){
     let parameters = new HttpParams()
       .set('idUser',idUser)
+      // .set('token',this.usersService.usuario().token)
 
     const data= await this.apiLumenService.getDataAsync('getWeight',parameters);
     return data;

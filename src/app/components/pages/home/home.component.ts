@@ -20,7 +20,10 @@ export class HomeComponent implements OnInit {
   async ngOnInit(){
 
     this.loading=false;
-    this.weightData=await this.weightService.getWeight(this.usersService.usuario().id);
+    var user=this.usersService.usuario();
+    if(user)
+      this.weightData=await this.weightService.getWeight(this.usersService.usuario().id);
+
     this.loading=true;
   }
 
