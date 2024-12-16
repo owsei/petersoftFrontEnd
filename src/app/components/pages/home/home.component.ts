@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
     var user=this.usersService.usuario();
     if(user)
       this.weightData=await this.weightService.getWeight(this.usersService.usuario().id);
-
     this.loading=true;
   }
 

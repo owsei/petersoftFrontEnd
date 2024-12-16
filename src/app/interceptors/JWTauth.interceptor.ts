@@ -9,8 +9,9 @@ export function JWTauthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
 
   var usuario=userService.usuario();
 
-  if(usuario.token && usuario.token!=null)
+  if(usuario && usuario.token && usuario.token!=null)
   {
+    // console.log(usuario.token);
     const clonedRequest = req.clone({
       setHeaders: {
         Authorization: usuario.token
@@ -20,8 +21,8 @@ export function JWTauthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
   }
 
 
-  console.log("Desde interceptor"+req.params);
-  console.log("Desde interceptor Usuario"+ usuario);
+  // console.log("Desde interceptor"+req.params);
+  // console.log("Desde interceptor Usuario"+ usuario);
   // console.log(req.url);
   return next(req);
 }

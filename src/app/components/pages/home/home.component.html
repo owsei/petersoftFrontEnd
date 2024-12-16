@@ -45,6 +45,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">id</th>
         <th scope="col">Weight</th>
         <th scope="col">Date</th>
       </tr>
@@ -52,7 +53,8 @@
     <tbody>
       @for (item of weightData; track item.id ;let idx = $index) {
       <tr>
-        <th scope="row">{{idx}}</th>
+        <td scope="row">{{idx}}</td>
+        <td>{{item.id}}</td>
         <td>{{item.weight}}</td>
         <td>{{item.dateWeight}}</td> <!--|date:'dd/MM/yyyy'-->
       </tr>
