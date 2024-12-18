@@ -27,6 +27,10 @@ export class HomeComponent implements OnInit {
   }
 
 
+  updateRow(id:any){
+    console.log(id);
+  }
+
 
 
 }

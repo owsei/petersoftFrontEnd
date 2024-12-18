@@ -40,27 +40,33 @@
   </div>
 }
 @else {
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">id</th>
-        <th scope="col">Weight</th>
-        <th scope="col">Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of weightData; track item.id ;let idx = $index) {
-      <tr>
-        <td scope="row">{{idx}}</td>
-        <td>{{item.id}}</td>
-        <td>{{item.weight}}</td>
-        <td>{{item.dateWeight}}</td> <!--|date:'dd/MM/yyyy'-->
-      </tr>
-    }
-    </tbody>
-  </table>
+  <div class="container-fluid">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" class="col-1">#</th>
+          <th scope="col" class="col-1">id</th>
+          <th scope="col" class="col-1">Weight</th>
+          <th scope="col" class="col-5">Date</th>
+          <th scope="col" class="col-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of weightData; track item.id ;let idx = $index) {
+        <tr>
+          <td scope="row">{{idx}}</td>
+          <td>{{item.id}}</td>
+          <td>{{item.weight}}</td>
+          <td>{{item.dateWeight}}</td> <!--|date:'dd/MM/yyyy'-->
+          <td class="p-2" style="background-color: bisque;">
+            <button type="button" class="btn btn-warning" (click)="updateRow(item.idWeight)">Update</button>&nbsp;
+            <button type="button" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  </div>
 
 }
 
