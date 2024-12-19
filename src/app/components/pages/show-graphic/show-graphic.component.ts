@@ -39,6 +39,8 @@ export class ShowGraphicComponent implements OnInit {
       title: {
         text: "Weight for "+ this.usersService.usuario().name+" "
       },
+      zoomEnabled: true,
+
       data: [{
         type: "line",
 			  xValueFormatString: "DD/MM/YYYY",

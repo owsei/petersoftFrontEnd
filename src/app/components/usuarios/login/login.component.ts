@@ -3,7 +3,6 @@ import * as CryptoJS from 'crypto-js';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from '../../../services/users.service';
-import { forkJoin } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -49,12 +48,12 @@ export class LoginComponent {
     } catch (error) {
       this.errorMessage=true;
     }
-
-
-
   }
 
 
+  register(){
+    this.router.navigate(['/register']);
+  }
 
 
 

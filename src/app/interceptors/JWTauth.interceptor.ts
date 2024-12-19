@@ -11,7 +11,7 @@ export function JWTauthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerF
 
   if(usuario && usuario.token && usuario.token!=null)
   {
-    // console.log(usuario.token);
+    console.log(usuario.token);
     const clonedRequest = req.clone({
       setHeaders: {
         Authorization: usuario.token

@@ -4,6 +4,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { LoginComponent } from './components/usuarios/login/login.component';
 import { InsertWeightComponent } from './components/pages/insert-weight/insert-weight.component';
 import { ShowGraphicComponent } from './components/pages/show-graphic/show-graphic.component'
+import { RegisterComponent } from './components/usuarios/register/register.component';
 
 export const routes: Routes = [
   //Principal
@@ -12,5 +13,6 @@ export const routes: Routes = [
   // USUARIOS
   {path:'login',component:LoginComponent,pathMatch:'full'},
   {path:'insertWeigth',component:InsertWeightComponent,pathMatch:'full'},
-  {path:'showGraphic',component:ShowGraphicComponent,pathMatch:'full'}
+  {path:'showGraphic',component:ShowGraphicComponent,pathMatch:'full'},
+  {path:'register',component:RegisterComponent,pathMatch:'full'}
 ];

@@ -47,6 +47,14 @@ export class ApiLumenService {
   }
 
 
+  public async deleteDataObservableAsync(url:any,parameters:HttpParams): Promise<any> {
+    let parametersToDelete = new HttpParams();
+    if (parameters)
+      parametersToDelete=parameters;
+    return await this.http.delete(environment.apiLumenUrl + url,{params:parametersToDelete}).toPromise();
+  }
+
+
 
 
 

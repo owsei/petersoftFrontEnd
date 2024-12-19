@@ -15,7 +15,6 @@ export class WeightService {
   async getWeight(idUser:any){
     let parameters = new HttpParams()
       .set('idUser',idUser)
-      // .set('token',this.usersService.usuario().token)
 
     const data= await this.apiLumenService.getDataAsync('getWeight',parameters);
     return data;
@@ -44,4 +43,18 @@ export class WeightService {
       console.log(error);
      }
     }
+
+    async deletetWeight(idUser:any,idWeight:any){
+
+      let parameters = new HttpParams()
+        .set('idUser',idUser)
+        .set('idWeight',idWeight);
+       try{
+        const response= await this.apiLumenService.deleteDataObservableAsync('deleteWeight',parameters);
+        return response;
+       }
+       catch(error){
+        console.log(error);
+       }
+      }
 }
